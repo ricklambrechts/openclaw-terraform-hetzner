@@ -97,3 +97,6 @@ export TF_VAR_tailscale_auth_key=""
 # ============================================
 # export TF_VAR_server_type="cx23"
 # export TF_VAR_server_location="nbg1"
+
+# Override default DNS servers.
+# export TF_VAR_server_dns_servers=""

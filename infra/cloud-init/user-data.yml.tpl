@@ -55,6 +55,17 @@ runcmd:
   - chmod 700 /home/${app_user}/.ssh
   - chmod 600 /home/${app_user}/.ssh/authorized_keys
 
+%{ if dns_servers != "" ~}
+  # -----------------------------------------------------------------------------
+  # Configure DNS
+  # -----------------------------------------------------------------------------
+  - echo "Configuring systemd-resolved..."
+  - mkdir -p /etc/systemd/resolved.conf.d
+  - printf '[Resolve]\nDNS=%s\nDomains=~.\n' '${dns_servers}' > /etc/systemd/resolved.conf.d/dns.conf
+  - systemctl restart systemd-resolved
+  - echo "DNS configuration applied."
+%{ endif ~}
+
   # -----------------------------------------------------------------------------
   # Install Docker
   # -----------------------------------------------------------------------------

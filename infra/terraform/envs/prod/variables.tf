@@ -53,6 +53,12 @@ variable "server_location" {
   default     = "nbg1"
 }
 
+variable "server_dns_servers" {
+  description = "String containing DNS servers (space-separated) to configure in systemd-resolved."
+  type        = string
+  default     = ""
+}
+
 # ============================================
 # Application Configuration
 # ============================================
