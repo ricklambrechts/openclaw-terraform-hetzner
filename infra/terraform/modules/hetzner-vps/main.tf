@@ -40,7 +40,7 @@ resource "hcloud_firewall" "main" {
       source_ips = [rule.value]
     }
   }
-  
+
   # Allow Tailscale UDP (if enabled)
   dynamic "rule" {
     for_each = var.enable_tailscale ? [1] : []
